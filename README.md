@@ -1,13 +1,13 @@
 # Go-demo
 ## string package usage
-1.string reverse
+#### string reverse
 ```golang
 
 str := "reverse string"
 ret := StringReverse(str) 
 fmt.Println(ret)  //"gnirts esrever"
 ```
-2.string join
+#### string join
 in a simple way, you can do like this:
 ```golang
 s1 := "hello"
