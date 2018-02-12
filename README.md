@@ -8,8 +8,10 @@ ret := StringReverse(str)
 fmt.Println(ret)  //"gnirts esrever"
 ```
 #### string join
-in a simple way, you can do like this:
 ```golang
+//there two function for use
+//StringJoin and StringJoinMore
+
 s1 := "hello"
 s2 := "world"
 
