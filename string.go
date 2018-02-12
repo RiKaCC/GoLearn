@@ -55,8 +55,12 @@ func StringJoin(strs ...string) *String {
 	return s
 }
 
-func StringJoinMore(str interface{}) string {
-	return ""
+func StringJoinMore(str []string) *String {
+
+	s := new(String)
+	s.JoinArr = str
+
+	return s
 }
 
 func main() {
@@ -69,4 +73,7 @@ func main() {
 
 	s := StringJoin(s1, s2).BetweenWith("+")
 	fmt.Println(s)
+
+	ss := []string{"hello", "world"}
+	fmt.Println(StringJoinMore(ss).BetweenWith(" "))
 }
