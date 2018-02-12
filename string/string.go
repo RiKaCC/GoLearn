@@ -1,4 +1,4 @@
-package main
+package string
 
 import (
 	"bytes"
@@ -61,19 +61,4 @@ func StringJoinMore(str []string) *String {
 	s.JoinArr = str
 
 	return s
-}
-
-func main() {
-	str := "hello"
-	fmt.Println(ReverseString(str))
-	fmt.Println(Reverse(str))
-
-	s1 := "hey"
-	s2 := "you"
-
-	s := StringJoin(s1, s2).BetweenWith("+")
-	fmt.Println(s)
-
-	ss := []string{"hello", "world"}
-	fmt.Println(StringJoinMore(ss).BetweenWith(" "))
 }
