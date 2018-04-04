@@ -2,9 +2,10 @@ package string
 
 import (
 	"bytes"
+	"errors"
 )
 
-//字符串反转
+// 字符串反转
 func ReverseString(s string) string {
 	runes := []rune(s)
 
@@ -26,6 +27,26 @@ func Reverse(s string) string {
 type String struct {
 	JoinString string
 	JoinArr    []string
+	s          string
+	start      int
+	end        int
+}
+
+// 字符串拼接
+func StringJoin(strs ...string) *String {
+
+	s := new(String)
+	s.JoinArr = strs
+
+	return s
+}
+
+func StringJoinMore(str []string) *String {
+
+	s := new(String)
+	s.JoinArr = str
+
+	return s
 }
 
 func (s *String) BetweenWith(joinstring string) string {
@@ -45,19 +66,37 @@ func (s *String) BetweenWith(joinstring string) string {
 	return buf.String()
 }
 
-//字符串拼接
-func StringJoin(strs ...string) *String {
+// 获取子串
+func SubString(str string) *String {
+	st := []rune(str)
 
-	s := new(String)
-	s.JoinArr = strs
+	s := &String{
+		s: string(st),
+	}
+	return s
+}
+
+func (s *String) Start(n int) *String {
+	if n < 0 {
+		n = 0
+	}
+	s.start = n
 
 	return s
 }
 
-func StringJoinMore(str []string) *String {
+func (s *String) End(n int) (string, error) {
+	len := len(s.s)
+	if n > len {
+		n = len
+	}
 
-	s := new(String)
-	s.JoinArr = str
+	// Start的时候不用去判断start是不是大于字符串 的长度，在这里一次就能判断了
+	if s.start >= n {
+		return "", errors.New("start larger than end")
+	}
+	s.end = n
 
-	return s
+	ret := s.s[s.start : s.end+1]
+	return ret, nil
 }

@@ -33,3 +33,11 @@ func TestStringJoinMore(t *testing.T) {
 		t.Errorf("StringJoinMore")
 	}
 }
+
+func TestSubString(t *testing.T) {
+	str := "Monday"
+	ret, _ := SubString(str).Start(0).End(4)
+	if ret != "Monda" {
+		t.Errorf("SubString")
+	}
+}
