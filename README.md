@@ -33,3 +33,11 @@ str := []string{"hello","world","every"}
 ret := StringJoinMore(str).BetweenWith("+")
 fmt.Println(ret) //"hello+world"
 ```
+#### SubString
+```golang
+str := "Monday"
+s, _ := SubString(str).Start(0).End(4)
+fmt.Println(s) // "Monda"
+s, _ : SubString(str).Start(2).End(3)
+fmt.Println(s) // "nd"
+```
