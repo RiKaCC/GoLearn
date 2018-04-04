@@ -40,4 +40,9 @@ func TestSubString(t *testing.T) {
 	if ret != "Monda" {
 		t.Errorf("SubString")
 	}
+
+	ret1, _ := SubString(str).OnlyStart(2)
+	if ret1 != "nday" {
+		t.Errorf("SubString")
+	}
 }

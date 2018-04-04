@@ -85,6 +85,21 @@ func (s *String) Start(n int) *String {
 	return s
 }
 
+func (s *String) OnlyStart(n int) (string, error) {
+	if n < 0 {
+		n = 0
+	}
+
+	len := len(s.s)
+	if n >= len {
+		return "", errors.New("start must less than length of string")
+	}
+
+	s.start = n
+
+	return s.s[s.start:len], nil
+}
+
 func (s *String) End(n int) (string, error) {
 	len := len(s.s)
 	if n > len {
