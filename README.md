@@ -38,6 +38,6 @@ fmt.Println(ret) //"hello+world"
 str := "Monday"
 s, _ := SubString(str).Start(0).End(4)
 fmt.Println(s) // "Monda"
-s, _ : SubString(str).Start(2).End(3)
+s, _ := SubString(str).Start(2).End(3)
 fmt.Println(s) // "nd"
 ```
