@@ -28,6 +28,7 @@ type String struct {
 	JoinString string
 	JoinArr    []string
 	s          string
+	len        int
 	start      int
 	end        int
 }
@@ -71,7 +72,10 @@ func SubString(str string) *String {
 	st := []rune(str)
 
 	s := &String{
-		s: string(st),
+		s:     string(st),
+		len:   len(st),
+		start: 0,
+		end:   len(st),
 	}
 	return s
 }
@@ -90,20 +94,18 @@ func (s *String) OnlyStart(n int) (string, error) {
 		n = 0
 	}
 
-	len := len(s.s)
-	if n >= len {
+	if n >= s.len {
 		return "", errors.New("start must less than length of string")
 	}
 
 	s.start = n
 
-	return s.s[s.start:len], nil
+	return s.s[s.start:s.end], nil
 }
 
 func (s *String) End(n int) (string, error) {
-	len := len(s.s)
-	if n > len {
-		n = len
+	if n > s.len {
+		n = s.len
 	}
 
 	// Start的时候不用去判断start是不是大于字符串 的长度，在这里一次就能判断了
@@ -114,4 +116,18 @@ func (s *String) End(n int) (string, error) {
 
 	ret := s.s[s.start : s.end+1]
 	return ret, nil
+}
+
+func (s *String) OnlyEnd(n int) (string, error) {
+	if n <= 0 {
+		return "", errors.New("end must larger than zero")
+	}
+
+	if n > s.len {
+		n = s.len
+	}
+
+	s.end = n
+
+	return s.s[s.start : s.end+1], nil
 }
