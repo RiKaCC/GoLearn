@@ -53,6 +53,7 @@ Timeout time.Duration
 可以看到以下几个关注点：
 1. timeout的时间计算：包含了连接时间，任何重定向和读取response body的时间
 2. 如果不设置该值，则表示没有timeout
+3. 若果取消timeout，则会取消本次请求
 
 ### 详细的Timeout
 下面是更详细的一些粒度：
