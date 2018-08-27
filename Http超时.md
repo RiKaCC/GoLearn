@@ -26,6 +26,31 @@ resp, err := c.Get(url)
 
 ... ...
 ```
+看一下官方文档对Timeout的解释：
+```
+// Timeout specifies a time limit for requests made by this
+// Client. The timeout includes connection time, any
+// redirects, and reading the response body. The timer remains
+// running after Get, Head, Post, or Do return and will
+// interrupt reading of the Response.Body.
+//
+// A Timeout of zero means no timeout.
+//
+// The Client cancels requests to the underlying Transport
+// using the Request.Cancel mechanism. Requests passed
+// to Client.Do may still set Request.Cancel; both will
+// cancel the request.
+//
+// For compatibility, the Client will also use the deprecated
+// CancelRequest method on Transport if found. New
+// RoundTripper implementations should use Request.Cancel
+// instead of implementing CancelRequest.
+       
+Timeout time.Duration
+```
+可以看到以下几个关注点：
+1. timeout的时间计算：包含了连接时间，任何重定向和读取response body的时间
+2. 如果不设置该值，则表示没有timeout
 
 下面是更详细的一些粒度：
 
@@ -46,6 +71,7 @@ http.Transport.TLSHandshakeTimeout -> TLS的握手时间
 ```
 // TLSHandshakeTimeout specifies the maximum amount of time waiting to
 // wait for a TLS handshake. Zero means no timeout.
+
 TLSHandshakeTimeout time.Duration
 ```
 
@@ -57,5 +83,6 @@ http.Transport.ResponseHeaderTimeout -> 限制读取response header的时间
 // time to wait for a server's response headers after fully
 // writing the request (including its body, if any). This
 // time does not include the time to read the response body.
+
 ResponseHeaderTimeout time.Duration
 ```
