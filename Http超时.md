@@ -16,6 +16,8 @@ if err != nil {
 
 fmt.Println(stirng(body))
 ```
+
+### 简单的Timeout
 这是一个没有设置超时时间的get请求，最简单的设置超时的方式：使用http.Client的Timeout字段， 这个超时的时间计算是包括从连接(Dail)到读完response body, 代码如下：
 ```
 c := &http.Client {
@@ -52,6 +54,7 @@ Timeout time.Duration
 1. timeout的时间计算：包含了连接时间，任何重定向和读取response body的时间
 2. 如果不设置该值，则表示没有timeout
 
+### 详细的Timeout
 下面是更详细的一些粒度：
 
 ```
