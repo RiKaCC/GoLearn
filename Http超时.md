@@ -28,7 +28,20 @@ resp, err := c.Get(url)
 ```
 
 下面是更详细的一些粒度：
+
+```
+t := &http.Transport {
+  TLSHandshakeTimeout:   10 * time.Second,
+  ResponseHeaderTimeout: 10 * time.Second,
+}
+
+c := &http.Client {
+  TransPort: t,
+}
+```
+
 http.Transport.TLSHandshakeTimeout -> TLS的握手时间
+
 官方的解释如下：
 ```
 // TLSHandshakeTimeout specifies the maximum amount of time waiting to
@@ -37,6 +50,7 @@ TLSHandshakeTimeout time.Duration
 ```
 
 http.Transport.ResponseHeaderTimeout -> 限制读取response header的时间
+
 官方解释如下：
 ```
 // ResponseHeaderTimeout, if non-zero, specifies the amount of
