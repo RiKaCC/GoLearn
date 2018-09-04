@@ -65,7 +65,9 @@ Do函数的原型如下：
 ```
 func (c *Client) Do(req *Request) (*Response, error)
 ```
+
 1. Do函数就是发送HTTP请求和接收HTTP响应。
 2. 如果client设置的策略有问题，或者HTTP会话失败了，会返回error.非2XX的返回码并不会导致error。
-3. 
+3. 如果返回的error是nil,那么返回的body一定是不为空的，并且body会按照期望close。
+4. 如果body没有close, client的底层就没法复用TCP连接。没法使用"keep-alive"
 
