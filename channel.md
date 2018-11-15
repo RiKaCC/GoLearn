@@ -1,4 +1,3 @@
-[TOC]
 # channel
 ## 基本知识
 channel跟Map一样，是一个使用make创建的数据结构的引用。
