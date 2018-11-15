@@ -6,4 +6,6 @@
   * [HTTP包详解](http/http包详解.md)
 * [String](string.md)
   * [常用方法](string/chang-yong-fang-fa.md)
+* [并发](bing-fa.md)
+  * [通道](channel.md)
 
