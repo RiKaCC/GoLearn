@@ -1,0 +1,20 @@
+```
+func parseConfig(f string) (*configs.Config, error) {
+    bs, err := ioutil.ReadFile(f)
+    if err != nil {
+        log.Error(err.Error())
+        return nil, err
+    }
+
+    var cfg configs.Config
+    err = yaml.Unmarshal(bs, &cfg)
+    if err != nil {
+        log.Error(err.Error())
+        return nil, err
+    }
+
+    log.Info("parsed config, %+v \n", cfg)
+
+    return &cfg, nil
+}
+```
